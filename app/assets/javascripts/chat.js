@@ -3,10 +3,13 @@ class Chat {
     this.channel = null;
     this.client = null;
     this.identity = null;
+    this.messages = ["Connection..."];
     this.initialize();
   }
 
   initialize() {
+    this.renderMessages();
+    
     Rails.ajax({
       url: "/tokens",
       type: "POST",
@@ -18,6 +21,13 @@ class Chat {
           .then(client => this.setupClient(client));
       }
     });
+  }
+
+  renderMessages() {
+    let messageContainer = document.querySelector(".chat .messages");
+    messageContainer.innerHTML = this.messages
+      .map(message => `<div class="message">${message}</div>`)
+      .join("");
   }
 
   joinChannel() {
