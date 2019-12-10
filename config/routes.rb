@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
-  # get 'chats/show'
-  root 'chats#show'
+  resources: :tokens, only: [:create]
+
+  root to: 'chats#show'
 end
