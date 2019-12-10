@@ -9,7 +9,7 @@ class Chat {
 
   initialize() {
     this.renderMessages();
-    
+
     Rails.ajax({
       url: "/tokens",
       type: "POST",
@@ -30,6 +30,19 @@ class Chat {
       .join("");
   }
 
+  addMessage(message) {
+    let html = "";
+
+    if(message.author) {
+      const className = message.author == this.identity ? "user me" : "user";
+      html += `<span class="${className}">${message.author}: </span>`;
+    }
+
+    html += message.body;
+    this.messages.push(html);
+    this.renderMessages();
+  }
+
   joinChannel() {
     if(this.channel.state.status !== "joined") {
       this.channel.join().then(function(channel) {
@@ -41,6 +54,7 @@ class Chat {
   setupChannel(channel) {
     this.channel = channel;
     this.joinChannel();
+    this.addMessage({ body: `Joined general channel as ${this.identity}` });
   }
 
   setupClient(client) {
