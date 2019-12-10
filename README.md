@@ -1,24 +1,8 @@
-# README
+# About This Project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+I created this project to begin play more with Rails and to finally use Twilio. The full tutorial can be found here: https://www.twilio.com/blog/build-chat-ruby-on-rails-applications
 
-Things you may want to cover:
+In this tutorial, I learned how to build a live chat application using Twilio Programmable Chat and Ruby on Rails.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+I also used bourbon and bitters for styling, clearance for authentication, and 
+twilio-ruby to generate a token.
