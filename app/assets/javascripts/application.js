@@ -15,29 +15,8 @@
 //= require turbolinks
 //= require_tree .
 
-Rails.ajax({
-  url: "/tokens",
-  type: "POST",
-  success: function(data) {
-    Twilio.Chat.Client
-      .create(data.token)
-      .then(function(chatClient) {
-        chatClient.getChannelByUniqueName("general")
-          .then(function(channel) {
-
-          })
-          .catch(function(){
-            chatClient.createChannel({
-              uniqueName: "general",
-              friendlyName: "General Chat Channel"
-            }).then(function(channel) {
-              if(channel.state.status !== "joined") {
-                channel.join().then(function(channel) {
-                  console.log("Joined General Channel");
-                })
-              }
-            })
-          })
-      });
+document.addEventListener("DOMContentLoaded", () => {
+  if(document.querySelector(".chat")) {
+    window.chat = new Chat();
   }
 });
