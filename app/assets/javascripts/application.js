@@ -18,5 +18,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   if(document.querySelector(".chat")) {
     window.chat = new Chat();
+    console.log("YO");
   }
 });
